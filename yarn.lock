@@ -607,6 +607,11 @@ ndarray@^1.0.13, ndarray@^1.0.18:
     iota-array "^1.0.0"
     is-buffer "^1.0.2"
 
+next-pow-2@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/next-pow-2/-/next-pow-2-1.0.0.tgz#cb5c2f1dae040c56cdd5cda1dc5c6a3a338f4367"
+  integrity sha1-y1wvHa4EDFbN1c2h3FxqOjOPQ2c=
+
 nextgen-events@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/nextgen-events/-/nextgen-events-1.1.1.tgz#3595ad9405deaf0d982fd8d584747186370ec91f"

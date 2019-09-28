@@ -1,6 +1,7 @@
 // @flow
 const _ = require('lodash');
 const print = require('terminal-kit').realTerminal ;
+const findRoots = require('./durandKerner');
 
 const inputEquations = '8 * X^0 - 6 * X^1 + 0 * X^2 - 5.6 * X^3 = 3 * X^0';
 
@@ -14,8 +15,8 @@ const parseTerm = (equations) => {
     const sign = (match[2] === '-' ? -1 : 1) * (eqIndex < match.index ? -1 : 1);
     const x = match[4] || match[6];
     const degree = match[7] === undefined ? 1 : parseFloat(match[7]);
-    const coef1 = match[3] === undefined ? 1 : parseFloat(match[3]);
-    const coef2 = match[5] === undefined ? 1 : parseFloat(match[5]);
+    const coef1 = match[3] === '' || match[3] === undefined ? 1 : parseFloat(match[3]);
+    const coef2 = match[5] === '' || match[5] === undefined ? 1 : parseFloat(match[5]);
     const coef = coef1 * coef2
     terms.push({
       coef: coef * sign,
@@ -52,3 +53,10 @@ const reducedTerms = reduceTerms(terms);
 printTerm(terms);
 printTerm(reducedTerms);
 console.log(reducedTerms);
+const maxDegree = _.last(_.map(reducedTerms)).degree;
+const coefs = _.map(new Array(maxDegree + 1), (x, index) => reducedTerms[index] ? reducedTerms[index].coef : 0);
+var roots = findRoots(coefs)
+
+for(var i=0; i<roots.length; ++i) {
+  if (roots[0][i]) console.log(roots[0][i])
+}
